@@ -33,10 +33,28 @@ int countCycles(std::vector<int> vector) {
     return count;
 }
 
+void insertionSort(std::vector<int> vector) {
+    for (int i = 1; i < vector.size(); i++) {
+        int key = vector[i];
+        int j = i - 1;
+        while (j >= 0 && vector[j] > key) {
+            vector[j + 1] = vector[j];
+            j = j - 1;
+        }
+        vector[j + 1] = key;
+    }
+    for (int i = 0; i < vector.size(); i++) {
+        std::cout << vector[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 int main() {
     std::cout << "Random permutation:" << std::endl;
     permutation(10);
     std::cout << "Number of cycles:" << std::endl;
     std::cout << countCycles(vector) << std::endl;
+    std::cout << "Insertion Sort:" << std::endl;
+    insertionSort(vector);
     return 0;
 }
