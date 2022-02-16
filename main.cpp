@@ -51,10 +51,15 @@ void insertionSort(std::vector<int> vector) {
 
 int main() {
     std::cout << "Random permutation:" << std::endl;
-    permutation(10);
+    permutation(100);
     std::cout << "Number of cycles:" << std::endl;
     std::cout << cycles(vector) << std::endl;
     std::cout << "Insertion Sort:" << std::endl;
+    auto start = std::chrono::high_resolution_clock::now();
     insertionSort(vector);
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
+    std::cout << "Execution time of Insertion Sort:" << std::endl;
+    std::cout << duration.count() << " microseconds" << std::endl;
     return 0;
 }
