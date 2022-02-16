@@ -18,7 +18,7 @@ void permutation(int n) {
     std::cout << std::endl;
 }
 
-int countCycles(std::vector<int> vector) {
+int cycles(std::vector<int> vector) {
     int count = 0;
     std::vector<int> checked;
     for (int i = 0; i < vector.size(); i++) {
@@ -53,7 +53,7 @@ int main() {
     std::cout << "Random permutation:" << std::endl;
     permutation(10);
     std::cout << "Number of cycles:" << std::endl;
-    std::cout << countCycles(vector) << std::endl;
+    std::cout << cycles(vector) << std::endl;
     std::cout << "Insertion Sort:" << std::endl;
     insertionSort(vector);
     return 0;
