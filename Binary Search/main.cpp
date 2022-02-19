@@ -16,14 +16,14 @@ int binarySearch(std::vector<int> vector, int i, int j, int k) {
 }
 
 int main() {
-    std::vector<int> vector = {1, 2, 4, 7, 11, 16, 22, 29, 37};
-    int k = 1;
+    std::vector<int> vector = {-86, -75, -27, 7, 8, 14, 21, 34, 75, 83};
     int n = vector.size();
-    int result = binarySearch(vector, 0, n - 1, k);
+    int x = -86;
+    int result = binarySearch(vector, 0, n - 1, x);
     if (result == -1) {
-        std::cout << "Element not found" << std::endl;
+        std::cout << x << " not found" << std::endl;
     } else {
-        std::cout << "Element found at index " << result << std::endl;
+        std::cout << x << " found at index " << result << std::endl;
     }
     return 0;
 }
