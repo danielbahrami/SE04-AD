@@ -1,6 +1,23 @@
 #include <iostream>
 #include <vector>
 
+std::vector<int> vector;
+
+void permutation(int n) {
+    for (int i = 0; i < n; i++) {
+        vector.push_back(i);
+    }
+    std::srand(time(0));
+    for (int i = 0; i < vector.size(); i++) {
+        int j = i + rand() % (vector.size() - i);
+        std::swap(vector[i], vector[j]);
+    }
+    for (int i = 0; i < vector.size(); i++) {
+        std::cout << vector[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
 void merge(std::vector<int> &A, int p, int q, int r) {
     int n1 = q - p;
     int n2 = r - q;
@@ -19,10 +36,10 @@ void merge(std::vector<int> &A, int p, int q, int r) {
     for (int k = p; k < r; k++) {
         if (L[i] <= R[j]) {
             A[k] = L[i];
-            i = i + 1;
+            i++;
         } else {
             A[k] = R[j];
-            j = j + 1;
+            j++;
         }
     }
 }
@@ -37,10 +54,18 @@ void mergeSort(std::vector<int> &A, int p, int r) {
 }
 
 int main() {
-    std::vector<int> vector = {100, 46, 75, 66, 17, 93, 11, 95, 87, 55, 3332, 2, 9, -9};
+    std::cout << "Random permutation:" << std::endl;
+    permutation(100);
+    std::cout << "Merge Sort:" << std::endl;
+    auto start = std::chrono::high_resolution_clock::now();
     mergeSort(vector, 0, vector.size());
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     for (int i = 0; i < vector.size(); i++) {
         std::cout << vector[i] << " ";
     }
+    std::cout << std::endl;
+    std::cout << "Execution time of Merge Sort:" << std::endl;
+    std::cout << duration.count() << " microseconds" << std::endl;
     return 0;
 }
