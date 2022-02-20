@@ -1,9 +1,7 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> vector;
-
-void permutation(int n) {
+void permutation(std::vector<int> &vector, int n) {
     for (int i = 0; i < n; i++) {
         vector.push_back(i);
     }
@@ -12,6 +10,9 @@ void permutation(int n) {
         int j = i + rand() % (vector.size() - i);
         std::swap(vector[i], vector[j]);
     }
+}
+
+void print(std::vector<int> vector) {
     for (int i = 0; i < vector.size(); i++) {
         std::cout << vector[i] << " ";
     }
@@ -34,8 +35,10 @@ int cycles(std::vector<int> vector) {
 }
 
 int main() {
+    std::vector<int> vector;
     std::cout << "Random permutation:" << std::endl;
-    permutation(100);
+    permutation(vector, 10);
+    print(vector);
     std::cout << "Number of cycles:" << std::endl;
     std::cout << cycles(vector) << std::endl;
     return 0;
