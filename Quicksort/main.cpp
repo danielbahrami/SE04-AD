@@ -19,8 +19,25 @@ void print(std::vector<int> vector) {
     std::cout << std::endl;
 }
 
-void quicksort() {
+int partition(std::vector<int> &A, int p, int r) {
+    int x = A[r];
+    int i = p - 1;
+    for (int j = p; j < r; j++) {
+        if (A[j] <= x) {
+            i++;
+            std::swap(A[i], A[j]);
+        }
+    }
+    std::swap(A[i + 1], A[r]);
+    return i + 1;
+}
 
+void quicksort(std::vector<int> &A, int p, int r) {
+    if (p < r) {
+        int q = partition(A, p, r);
+        quicksort(A, p, q - 1);
+        quicksort(A, q + 1, r);
+    }
 }
 
 int main() {
@@ -30,7 +47,7 @@ int main() {
     print(vector);
     std::cout << "Quicksort:" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
-    // Quicksort()
+    quicksort(vector, 0, vector.size() - 1);
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     print(vector);
