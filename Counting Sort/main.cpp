@@ -26,13 +26,13 @@ int main() {
     std::cout << "Random permutation:" << std::endl;
     permutation(vector, 100);
     print(vector);
-    std::cout << "Insertion Sort:" << std::endl;
+    std::cout << "Counting Sort:" << std::endl;
     auto start = std::chrono::high_resolution_clock::now();
     // Counting Sort
     auto stop = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start);
     print(vector);
-    std::cout << "Execution time of Insertion Sort:" << std::endl;
+    std::cout << "Execution time of Counting Sort:" << std::endl;
     std::cout << duration.count() << " microseconds" << std::endl;
     return 0;
 }
